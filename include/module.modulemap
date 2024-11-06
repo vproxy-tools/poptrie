@@ -1,0 +1,4 @@
+module poptrie {
+    header "../poptrie.h"
+    export *
+}
