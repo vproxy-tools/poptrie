@@ -9,6 +9,31 @@
 #include <stdlib.h>
 #include <string.h>
 
+int poptrie6_route_add_s(struct poptrie *pt, uint128_s ip, int prefixlen, void *nexthop) {
+    __uint128_t ipx = *((__uint128_t*)&ip);
+    return poptrie6_route_add(pt, ipx, prefixlen, nexthop);
+}
+int poptrie6_route_change_s(struct poptrie *pt, uint128_s ip, int prefixlen, void *nexthop) {
+    __uint128_t ipx = *((__uint128_t*)&ip);
+    return poptrie6_route_change(pt, ipx, prefixlen, nexthop);
+}
+int poptrie6_route_update_s(struct poptrie *pt, uint128_s ip, int prefixlen, void *nexthop) {
+    __uint128_t ipx = *((__uint128_t*)&ip);
+    return poptrie6_route_update(pt, ipx, prefixlen, nexthop);
+}
+int poptrie6_route_del_s(struct poptrie *pt, uint128_s ip, int prefixlen) {
+    __uint128_t ipx = *((__uint128_t*)&ip);
+    return poptrie6_route_del(pt, ipx, prefixlen);
+}
+void * poptrie6_lookup_s(struct poptrie *pt, uint128_s ip) {
+    __uint128_t ipx = *((__uint128_t*)&ip);
+    return poptrie6_lookup(pt, ipx);
+}
+void * poptrie6_rib_lookup_s(struct poptrie *pt, uint128_s ip) {
+    __uint128_t ipx = *((__uint128_t*)&ip);
+    return poptrie6_rib_lookup(pt, ipx);
+}
+
 static inline __uint128_t
 INDEX(__uint128_t a, int s, int n)
 {

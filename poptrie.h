@@ -108,6 +108,10 @@ struct poptrie {
     int _allocated;
 };
 
+typedef struct {
+    uint64_t n[2];
+} uint128_s;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -130,6 +134,12 @@ extern "C" {
     void * poptrie6_lookup(struct poptrie *, __uint128_t);
     void * poptrie6_rib_lookup(struct poptrie *, __uint128_t);
 
+    int poptrie6_route_add_s(struct poptrie *, uint128_s, int, void *);
+    int poptrie6_route_change_s(struct poptrie *, uint128_s, int, void *);
+    int poptrie6_route_update_s(struct poptrie *, uint128_s, int, void *);
+    int poptrie6_route_del_s(struct poptrie *, uint128_s, int);
+    void * poptrie6_lookup_s(struct poptrie *, uint128_s);
+    void * poptrie6_rib_lookup_s(struct poptrie *, uint128_s);
 #ifdef __cplusplus
 }
 #endif
